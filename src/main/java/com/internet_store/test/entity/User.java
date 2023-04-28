@@ -10,7 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString(exclude = "orders")
+@ToString
 public class User {
 
     @Id
@@ -38,6 +38,7 @@ public class User {
     @Column(nullable = false)
     private boolean enabled;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Order> orders;
 }

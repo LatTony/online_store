@@ -3,13 +3,12 @@ package com.internet_store.test.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
-
 @Entity
 @Table(name = "products")
 @Getter
 @Setter
 @NoArgsConstructor
+@ToString
 public class Product {
 
     @Id
@@ -23,7 +22,7 @@ public class Product {
     private String description;
 
     @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal price;
+    private Double price;
 
     @Column(nullable = false)
     private Integer quantity;

@@ -3,7 +3,6 @@ package com.internet_store.test.entity;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -12,13 +11,14 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString(exclude = "user")
+@ToString
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ToString.Exclude
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
@@ -30,8 +30,9 @@ public class Order {
     private String status;
 
     @Column(name = "total_price", nullable = false, precision = 10, scale = 2)
-    private BigDecimal totalPrice;
+    private Double totalPrice;
 
+    @ToString.Exclude
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL)
     private List<OrderItem> orderItems;
 }
